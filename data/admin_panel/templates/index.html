@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика Рефералів</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Ваші стилі */
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+            position: relative;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+        }
+
+        .card-title {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Закрити">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1 class="mb-4">Статистика Рефералів</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Загальна Кількість Користувачів</h5>
+                        <p class="card-text">{{ stats.total_users }}</p>
+                    </div>
+                </div>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Загальна Кількість Рефералів</h5>
+                        <p class="card-text">{{ stats.total_referrals }}</p>
+                    </div>
+                </div>
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Загальна Кількість Реферерів</h5>
+                        <p class="card-text">{{ stats.total_referrers }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Топ-10 Реферерів</h5>
+                        <canvas id="topReferrersChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Топ-10 Реферерів (Таблиця)</h5>
+                <a href="{{ url_for('export_csv') }}" class="btn btn-success mb-3">Експортувати CSV</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Кількість Рефералів</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user_id, count in stats.top_referrers %}
+                        <tr>
+                            <td>{{ user_id }}</td>
+                            <td>{{ count }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Джерела Рефералів</h5>
+                <canvas id="referralSourcesChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Бібліотека Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Дані для Top Referrers
+        const topReferrersData = {
+            labels: [{% for user_id, count in stats.top_referrers %}'{{ user_id }}', {% endfor %}],
+        datasets: [{
+            label: 'Кількість Рефералів',
+            data: [{% for user_id, count in stats.top_referrers %}{{ count }}, {% endfor %}],
+            backgroundColor: 'rgba(54, 162, 235, 0.6)'
+            }]
+        };
+
+        // Опції для Top Referrers Chart
+        const topReferrersOptions = {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    precision: 0
+                }
+            }
+        };
+
+        // Створення Top Referrers Chart
+        new Chart(
+            document.getElementById('topReferrersChart'),
+            {
+                type: 'bar',
+                data: topReferrersData,
+                options: topReferrersOptions
+            }
+        );
+
+        // Дані для Referral Sources
+        const referralSourcesData = {
+            labels: [{% for referrer, count in stats.referral_sources.items() %}'{{ referrer }}', {% endfor %}],
+        datasets: [{
+            label: 'Кількість Рефералів',
+            data: [{% for referrer, count in stats.referral_sources.items() %}{{ count }}, {% endfor %}],
+            backgroundColor: 'rgba(255, 99, 132, 0.6)'
+            }]
+        };
+
+        // Опції для Referral Sources Chart
+        const referralSourcesOptions = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: false,
+                    text: 'Джерела Рефералів'
+                }
+            }
+        };
+
+        // Створення Referral Sources Chart
+        new Chart(
+            document.getElementById('referralSourcesChart'),
+            {
+                type: 'pie',
+                data: referralSourcesData,
+                options: referralSourcesOptions
+            }
+        );
+    </script>
+</body>
+
+</html>

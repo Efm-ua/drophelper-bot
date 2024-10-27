@@ -1,0 +1,34 @@
+{
+    "users": {
+        "1229624876": {
+            "username": "YevgeniyMelnyk",
+            "language": "uk",
+            "tokens": 5000,
+            "referral_code": "REF1229624876",
+            "referred_by": null,
+            "referrals": [],
+            "join_date": "2024-10-23T14:29:47.971174"
+        },
+        "410817600": {
+            "username": "Almiroff",
+            "language": "ru",
+            "tokens": 5000,
+            "referral_code": "REF410817600",
+            "referred_by": null,
+            "referrals": [],
+            "join_date": "2024-10-23T17:44:21.466939"
+        }
+    },
+    "total_spots": 1000,
+    "used_spots": 155,
+    "referral_codes": {
+        "REF1229624876": "1229624876",
+        "REF410817600": "410817600"
+    },
+    "1229624876": {
+        "tokens": 0,
+        "referrals": [],
+        "referral_code": "REF1229624876",
+        "referrer_id": null
+    }
+}

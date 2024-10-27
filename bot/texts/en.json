@@ -1,0 +1,21 @@
+{
+    "welcome": "🎉 Welcome to DropHelper!\n\nThis is your universal AI assistant for crypto airdrops. Use the bot to systematize routine tasks and maximize rewards.",
+    "spots_taken": "😔 Unfortunately, all spots are taken. You can join the waiting list.",
+    "button": "🚀 Open DropHelper",
+    "stats_title": "📊 Your Statistics",
+    "tokens_label": "💎 Helper Tokens",
+    "referrals_label": "👥 Friends Invited",
+    "earnings_label": "💰 Earned from Referrals",
+    "spots_left_label": "📝 Spots Left",
+    "referral_link_label": "🔗 Your Referral Link",
+    "copy_link_button": "📋 Copy Link",
+    "link_copied": "✅ Link copied!",
+    "help_title": "🤖 Available Commands",
+    "help_start": "Start using the bot",
+    "help_stats": "View your statistics",
+    "help_help": "Show this message",
+    "help_additional": "ℹ️ Additional Information",
+    "help_tokens_info": "- Get 5000 tokens for registration\n- Invite friends and get 1000 tokens for each\n- Use /stats command to get your referral link",
+    "not_registered": "❌ You are not registered yet. Use /start command",
+    "error_occurred": "❌ An error occurred: {error}"
+}

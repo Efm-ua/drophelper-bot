@@ -1,0 +1,130 @@
+# Translations template for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-10-26 08:40+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: app.py:37
+msgid "Language changed successfully."
+msgstr ""
+
+#: app.py:43
+#, python-format
+msgid "Файл не знайдено за шляхом: %(path)s"
+msgstr ""
+
+#: app.py:49
+#, python-format
+msgid "Помилка при завантаженні JSON: %(error)s"
+msgstr ""
+
+#: app.py:53
+msgid ""
+"JSON-файл має неправильну структуру: відсутній ключ 'users' або він не є "
+"словником."
+msgstr ""
+
+#: app.py:74
+#, python-format
+msgid ""
+"Користувач %(user_id)s має поле 'referrals', яке не було списком. "
+"Конвертовано у список."
+msgstr ""
+
+#: app.py:78
+msgid "referrals (не є списком)"
+msgstr ""
+
+#: app.py:93
+#, python-format
+msgid "Знайдено некоректні записи у users.json: %(invalid_data)s"
+msgstr ""
+
+#: app.py:124
+#, python-format
+msgid "Сталася помилка при обробці даних: %(error)s"
+msgstr ""
+
+#: app.py:125
+msgid "Сталася помилка при обробці даних:"
+msgstr ""
+
+#: app.py:137 templates/index.html:96
+msgid "User ID"
+msgstr ""
+
+#: app.py:137 templates/index.html:97 templates/index.html:133
+#: templates/index.html:164
+msgid "Number of Referrals"
+msgstr ""
+
+#: app.py:147
+#, python-format
+msgid "Сталася помилка при експорті CSV: %(error)s"
+msgstr ""
+
+#: app.py:148
+msgid "Сталася помилка при експорті CSV:"
+msgstr ""
+
+#: templates/404.html:6 templates/404.html:53
+msgid "Page Not Found"
+msgstr ""
+
+#: templates/404.html:54 templates/500.html:54
+msgid "Return to Home"
+msgstr ""
+
+#: templates/500.html:6 templates/500.html:53
+msgid "Internal Server Error"
+msgstr ""
+
+#: templates/index.html:6 templates/index.html:56
+msgid "Referral Statistics"
+msgstr ""
+
+#: templates/index.html:49
+msgid "Close"
+msgstr ""
+
+#: templates/index.html:62
+msgid "Total Users"
+msgstr ""
+
+#: templates/index.html:68
+msgid "Total Referrals"
+msgstr ""
+
+#: templates/index.html:74
+msgid "Total Referrers"
+msgstr ""
+
+#: templates/index.html:82
+msgid "Top 10 Referrers"
+msgstr ""
+
+#: templates/index.html:91
+msgid "Top 10 Referrers (Table)"
+msgstr ""
+
+#: templates/index.html:92
+msgid "Export CSV"
+msgstr ""
+
+#: templates/index.html:114 templates/index.html:179
+msgid "Referral Sources"
+msgstr ""
+
